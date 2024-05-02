@@ -33,6 +33,14 @@ echo "# Hello" > sample.md
 | -o         | ファイル出力: 文字を打ち込む or ファイルインポート | `npx markd -o sample.html` |
 | -i         | ファイルインポート: ファイルを指定して変換         | `npx marked -i sample.md`  |
 
+## 実例
+
+この README.md を HTML に変換したコマンド
+
+```bash
+npx marked -i README.md -o readme.html
+```
+
 ## ブラウザに直接書き込む
 
 ```html
@@ -60,5 +68,18 @@ echo "# Hello" > sample.md
   document.getElementById("content").innerHTML = marked.parse(
     "# Marked in the browser\n\nRendered by **marked**."
   );
+</script>
+```
+
+ファイルから読み取る場合
+
+```html
+<script type="module">
+  import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+  fetch("README.md")
+    .then((response) => response.text())
+    .then((text) => {
+      document.getElementById("content").innerHTML = marked.parse(text);
+    });
 </script>
 ```
