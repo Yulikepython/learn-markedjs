@@ -1,0 +1,64 @@
+<h1>Markedjs について</h1>
+<p><a href="https://marked.js.org/">公式サイト</a></p>
+<h2>インストール</h2>
+<p>CLI を使うためには、npm を使ったインストールが必要。
+グローバルでなく、ローカルにインストールする場合は以下のコマンドを実行します。</p>
+<pre><code class="language-bash">npm i -D marked
+</code></pre>
+<h2>CLI の使い方</h2>
+<p>ローカルにインストールした場合は以下のように実行します。</p>
+<pre><code class="language-bash">npx marked -o sample.html
+</code></pre>
+<p>md ファイルの書き出し</p>
+<pre><code>echo &quot;# Hello&quot; &gt; sample.md
+</code></pre>
+<h2>使えるオプション</h2>
+<table>
+<thead>
+<tr>
+<th>オプション</th>
+<th>概要</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>--help</td>
+<td>ヘルプ</td>
+<td><code>npx marked --help</code></td>
+</tr>
+<tr>
+<td>-o</td>
+<td>ファイル出力: 文字を打ち込む or ファイルインポート</td>
+<td><code>npx markd -o sample.html</code></td>
+</tr>
+<tr>
+<td>-i</td>
+<td>ファイルインポート: ファイルを指定して変換</td>
+<td><code>npx marked -i sample.md</code></td>
+</tr>
+</tbody></table>
+<h2>ブラウザに直接書き込む</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Marked in the browser&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;content&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/marked/marked.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      document.getElementById(&quot;content&quot;).innerHTML = marked.parse(
+        &quot;# Marked in the browser\n\nRendered by **marked**.&quot;
+      );
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="language-html">&lt;script type=&quot;module&quot;&gt;
+  import { marked } from &quot;https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js&quot;;
+  document.getElementById(&quot;content&quot;).innerHTML = marked.parse(
+    &quot;# Marked in the browser\n\nRendered by **marked**.&quot;
+  );
+&lt;/script&gt;
+</code></pre>
